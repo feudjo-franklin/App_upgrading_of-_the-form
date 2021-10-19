@@ -23,7 +23,10 @@
 				out.print("<td>" + listUsers.get(i).getUsers_id() + "</td>");
 				out.print("<td>" + listUsers.get(i).getUsername() + "</td>");
 				out.print("<td>" + listUsers.get(i).getEmail() + "</td>");
-				tempURL = request.getContextPath() + "/operation?page=updateUser&usersId=" + listUsers.get(i).getUsers_id();
+				tempURL = request.getContextPath() + "/operation?page=updateUser"+ 
+							"&usersId=" + listUsers.get(i).getUsers_id() +
+							"&username=" + listUsers.get(i).getUsername() +
+							"&email=" + listUsers.get(i).getEmail();
 				out.print("<td><a href="+tempURL+">Update</a></td>");
 				out.print("</tr>");
 			}
