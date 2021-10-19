@@ -15,25 +15,27 @@
 			<th>Email</th>
 			<th>Operation</th>
 			</thead>
+			<%! String deleteURL; %>
 			<%
 			List<User> listUsers = (List)request.getAttribute("listUsers");
-			String tempURL;
+			String updateURL;
 			for(int i=0; i < listUsers.size(); i++){
 				out.print("<tr>");
 				out.print("<td>" + listUsers.get(i).getUsers_id() + "</td>");
 				out.print("<td>" + listUsers.get(i).getUsername() + "</td>");
 				out.print("<td>" + listUsers.get(i).getEmail() + "</td>");
-				tempURL = request.getContextPath() + "/operation?page=updateUser"+ 
+				updateURL = request.getContextPath() + "/operation?page=updateUser"+ 
 							"&usersId=" + listUsers.get(i).getUsers_id() +
 							"&username=" + listUsers.get(i).getUsername() +
 							"&email=" + listUsers.get(i).getEmail();
-				out.print("<td><a href="+tempURL+">Update</a></td>");
-				out.print("</tr>");
-			}
-			
+				deleteURL = request.getContextPath() + "/operation?page=deleteUser"+ 
+							"&usersId=" + listUsers.get(i).getUsers_id();
+				out.print("<td><a href="+updateURL+">Update</a> | ");
 			%>
-			
-			
+			<a href="<%=deleteURL %>"
+				onclick="if(!confirm('Do you really want to delete the user?')) return false">Delete</a> </td>
+			</tr>
+			<%}%>
 			</table>
 		</div>
 	</div>
