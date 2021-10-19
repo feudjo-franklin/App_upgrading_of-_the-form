@@ -65,11 +65,21 @@ public class OperationController extends HttpServlet {
 				addUserOperation(newUser);
 				listUsers(request, response);
 				break;
+			case "updateuseroperation":
+				User updatedUser = new User(Integer.parseInt(request.getParameter("usersId")), request.getParameter("username"),
+										request.getParameter("email"));
+				updateUserOperation(dataSource, updatedUser);
+				listUsers(request, response);
+				break;
 			default:
 				errorPage(request, response);
 		}
 	}
 	
+	private void updateUserOperation(DataSource dataSource2, User updatedUser) {
+		new UsersModel().updateUser(dataSource, updatedUser);
+	}
+
 	private void addUserOperation(User newUser) {
 		new UsersModel().addUser(dataSource, newUser);
 		return;
