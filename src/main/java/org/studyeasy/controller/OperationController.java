@@ -41,10 +41,18 @@ public class OperationController extends HttpServlet {
 			case "updateuser":
 				updateUserFormLoader(request, response);
 				break;
+			case "deleteuser":
+				deleteUser(Integer.parseInt(request.getParameter("usersId")));
+				listUsers(request, response);
+				break;
 			default:
 				errorPage(request, response);
 		}
 	}
+	private void deleteUser(int usersId) {
+		new UsersModel().deleteUser(dataSource, usersId);
+	}
+
 	private void updateUserFormLoader(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("title", "Update User");
 		try {
