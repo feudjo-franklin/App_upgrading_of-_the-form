@@ -5,10 +5,10 @@
   			
                maxActive="25" maxIdle="5" maxWait="10000"
                
-               username="root" password="LeCORyk452and(=>"
+               username="root" password="your_database_password"
                 
                driverClassName="com.mysql.cj.jdbc.Driver"
                
-               url="jdbc:mysql://127.0.0.1:3306/easystudy_db?useSSL=false"/>
+               url="jdbc:mysql://127.0.0.1:3306/db_name?useSSL=false"/>
 
 </Context>
